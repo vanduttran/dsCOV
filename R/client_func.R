@@ -3,7 +3,6 @@
 #' @param y second block
 #' @return x+y
 #' @export 
-
 crossmatrix <- function(x,y){
-	return(crossprod(x,y))
+	return(crossprod(as.matrix(x),as.matrix(y)))
 }
