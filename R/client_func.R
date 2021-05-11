@@ -1,2 +1,2 @@
-rCCA <- function() {
+rCCA <- function() {  dog
 }
