@@ -1,2 +1,3 @@
-rCCA <- function() {  dog
+rCCA <- function(x,y) { 
+ return(x+y)
 }
