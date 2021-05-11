@@ -3,6 +3,7 @@
 #' @param y second block
 #' @return x+y
 #' @export 
-rCCA <- function(x,y) { 
- return(x+y)
+
+crossmatrix <- function(x,y){
+	return(crossprod(x,y))
 }

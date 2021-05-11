@@ -11,7 +11,8 @@ Depends: DSI, dsSwissKnife, DSOpal
 Imports: bigmemory, parallel
 Description: Client side functions for integrating sum of squares and cross products matrices.
 AggregateMethods:
-    rCCA
+    crossmatrix	
+	
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
