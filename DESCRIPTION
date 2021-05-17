@@ -7,11 +7,12 @@ Authors@R:
            role = c("aut", "cre"),
            email = "thuong.tran@sib.swiss",
            comment = c(ORCID = "0000-0003-2074-5029"))
-Depends: DSI, dsSwissKnife, DSOpal
+Depends: DSI, DSOpal
 Imports: bigmemory, parallel
 Description: Client side functions for integrating sum of squares and cross products matrices.
 AggregateMethods:
-    crossmatrix	
+    crossmatrix,
+    mirror	
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
