@@ -18,7 +18,8 @@ mirror <- function(x){
 #' @title Federated ComDim
 #' @param xl list of centered matrices from first block
 #' @param yl list of centered matrices from second block
-#' @return x
+#' @return Cx
+#' @return Cxy
 #' @export 
 merge_cov <- function(lx,ly = NULL){
 #with matrices 1701 x 4, 1701 x 6 and 1290x4, 1290 x6 order of error aoround 10^-4
