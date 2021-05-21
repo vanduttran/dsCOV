@@ -25,3 +25,16 @@ mirror <- function(x){
 	return(x)
 }
 
+#' @title Federated ComDim
+#' @param x_cent centered dataset
+#' @param value output coefficient matrix from CCA
+#' @return CV canonical variates 
+#' @export 
+canVar <- function(x_cent, value) {
+  valued <- dsSwissKnife:::.decode.arg(value)
+  if (is.list(valued)) valued <- do.call(rbind, valued)
+  
+  CV = x_cent %*% valued
+  
+  return(CV)
+}

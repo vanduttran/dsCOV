@@ -11,8 +11,9 @@ Depends: DSI, DSOpal
 Imports: bigmemory, parallel
 Description: Client side functions for integrating sum of squares and cross products matrices.
 AggregateMethods:
-    crossmatrix,
-    mirror
+    crossmatrix,	
+    mirror,
+    canVar
 
 License: GPL-3
 Encoding: UTF-8
