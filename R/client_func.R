@@ -1,7 +1,7 @@
 #' @title Federated ComDim
 #' @param x first block
 #' @param y second block
-#' @return crossprod between x and y
+#' @return crossprod between x and y and as attribute the dimension of the original dataset
 #' @export 
 crossmatrix <- function(x,y = NULL){
   
@@ -37,4 +37,37 @@ canVar <- function(x_cent, value) {
   CV = x_cent %*% valued
   
   return(CV)
+}
+
+#' @title Federated ComDim
+#' @param x_cent centered dataset
+#' @param cvx canonical variate from x_cent dataset
+#' @return loadx loadings as cor(cvx, x_cent)
+#' @export 
+comp_loadings <- function(x_cent, cvx) {
+  valued <- dsSwissKnife:::.decode.arg(cvx)
+  if (is.list(valued)) valued <- do.call(rbind, cvx)
+  
+  cvx_cent = lapply(cvx, function(x){scale(x, scale = F)})
+  cvx_cross = Reduce("+", lapply(cvx_cent, crossprod))
+  
+  x_cross = Reduce("+", lapply(x_cent, crossprod))
+  
+  cvx_x_cross = Reduce("+", crossprod(x_cent, cvx))
+  
+  # x_cross = datashield.aggregate(opals, as.symbol('crossmatrix(x_cent)'), async=T)
+  # tot.x_cross = Reduce("+", x_cross)
+  # n.row_x = Reduce("+",lapply(lx, function(x){attributes(x)$rawData.dim[1]}))
+  
+  var_x = diag(1/sqrt(diag(x_cross)), ncol(x_cent), ncol(x_cent))
+  var_cvx = diag(1/sqrt(diag(cvx_cross)), ncol(cvx), ncol(cvx))
+  
+  tot.var_x = var_x/ (Reduce("+", lapply(x_cent, nrow))-1)
+  tot.var_cvx =  var_cvx/ (Reduce("+", lapply(cvx, nrow))-1)
+  tot.var_cvx_x = cvx_x_cross/ (Reduce("+", lapply(cvx, nrow))-1)
+  
+  loadx = tot.var_x %*% tot.var_cvx_x %*% tot.var_cvx
+  
+  return(loadx)
+  
 }
