@@ -71,3 +71,17 @@ comp_loadings <- function(x_cent, cvx) {
   return(loadx)
   
 }
+
+#' @title Federated ComDim
+#' @param x_cent centered dataset
+#' @param cvx canonical variate from x_cent dataset
+#' @return cv_x_cross as crossprod(cvx, x_cent)
+#' @export 
+hybrid.crossmatrix <- function(x_cent, cvx) {
+    cv <- .decode.arg(cvx)
+    if (is.list(valued)) valued <- do.call(rbind, cv)
+    
+    cvx_x_cross = crossprod(cv_x_cross)
+    
+    return(cv_x_cross)
+}
