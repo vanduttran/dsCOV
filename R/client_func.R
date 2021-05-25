@@ -45,7 +45,7 @@ canVar <- function(x_cent, value) {
 #' @return cv_x_cross as crossprod(cvx, x_cent)
 #' @export 
 hybridCrossmatrix <- function(x_cent, cvx) {
-  cv <- dsSwissKnife:::.decode.arg(cvx)
+  cv <- .decode.arg(cvx)
   if (is.list(cv)) cv <- do.call(rbind, cv)
   
   cvx_cross = crossprod(cv)
