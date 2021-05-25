@@ -42,46 +42,19 @@ canVar <- function(x_cent, value) {
 #' @title Federated ComDim
 #' @param x_cent centered dataset
 #' @param cvx canonical variate from x_cent dataset
-#' @return loadx loadings as cor(cvx, x_cent)
+#' @return cv_x_cross as crossprod(cvx, x_cent)
 #' @export 
-comp_loadings <- function(x_cent, cvx) {
+hybridCrossmatrix <- function(x_cent, cvx) {
   cv <- dsSwissKnife:::.decode.arg(cvx)
   if (is.list(cv)) cv <- do.call(rbind, cv)
   
-  cvx_cent = lapply(cv, function(x){scale(x, scale = F)})
-  cvx_cross = Reduce("+", lapply(cvx_cent, crossprod))
+  cvx_cross = lapply(cvx, crossprod)
+  #x_cross = datashield.aggregate(opals, as.symbol('crossmatrix(x_cent)'), async=T)
+  x_cross = crossprod(x_cent)
+  attr(x_cross, "x_cent.dim") = dim(x_cent)
   
-  x_cross = Reduce("+", crossprod(x_cent))
+  cvx_x_cross =  crossprod(x_cent, cvx_cent)
   
-  cvx_x_cross = Reduce("+", crossprod(x_cent, cvx_cent))
-  
-  # x_cross = datashield.aggregate(opals, as.symbol('crossmatrix(x_cent)'), async=T)
-  # tot.x_cross = Reduce("+", x_cross)
-  # n.row_x = Reduce("+",lapply(lx, function(x){attributes(x)$rawData.dim[1]}))
-  
-  var_x = diag(1/sqrt(diag(x_cross)), ncol(x_cent), ncol(x_cent))
-  var_cvx = diag(1/sqrt(diag(cvx_cross)), ncol(cvx), ncol(cvx))
-  
-  tot.var_x = var_x/ (Reduce("+", lapply(x_cent, nrow))-1)
-  tot.var_cvx =  var_cvx/ (Reduce("+", lapply(cvx, nrow))-1)
-  tot.var_cvx_x = cvx_x_cross/ (Reduce("+", lapply(cvx, nrow))-1)
-  
-  loadx = tot.var_x %*% tot.var_cvx_x %*% tot.var_cvx
-  
-  return(loadx)
-  
-}
+  return(list(cvx_cross = cvx_cross, x_cross=x_cross, cvx_x_cross = cvx_x_cross))
 
-#' @title Federated ComDim
-#' @param x_cent centered dataset
-#' @param cvx canonical variate from x_cent dataset
-#' @return cv_x_cross as crossprod(cvx, x_cent)
-#' @export 
-hybrid.crossmatrix <- function(x_cent, cvx) {
-    cv <- .decode.arg(cvx)
-    if (is.list(valued)) valued <- do.call(rbind, cv)
-    
-    cvx_x_cross = crossprod(cv_x_cross)
-    
-    return(cv_x_cross)
 }
