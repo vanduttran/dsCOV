@@ -50,6 +50,6 @@ hybridCrossmatrix <- function(x_cent, cvx) {
   
   cvx_x_cross =  crossprod(x_cent, cv)
   
-  return(list(cvx_cross = cvx_cross, x_cross=x_cross, cvx_x_cross = cvx_x_cross))
+  return(cvx_x_cross = cvx_x_cross)
 
 }
