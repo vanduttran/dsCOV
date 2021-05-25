@@ -48,12 +48,11 @@ hybridCrossmatrix <- function(x_cent, cvx) {
   cv <- dsSwissKnife:::.decode.arg(cvx)
   if (is.list(cv)) cv <- do.call(rbind, cv)
   
-  cvx_cross = lapply(cv, crossprod)
-  #x_cross = datashield.aggregate(opals, as.symbol('crossmatrix(x_cent)'), async=T)
+  cvx_cross = crossprod(cv)
   x_cross = crossprod(x_cent)
   attr(x_cross, "x_cent.dim") = dim(x_cent)
   
-  cvx_x_cross =  crossprod(x_cent, cvx_cent)
+  cvx_x_cross =  crossprod(x_cent, cv)
   
   return(list(cvx_cross = cvx_cross, x_cross=x_cross, cvx_x_cross = cvx_x_cross))
 
