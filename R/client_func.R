@@ -45,15 +45,15 @@ canVar <- function(x_cent, value) {
 #' @return loadx loadings as cor(cvx, x_cent)
 #' @export 
 comp_loadings <- function(x_cent, cvx) {
-  valued <- dsSwissKnife:::.decode.arg(cvx)
-  if (is.list(valued)) valued <- do.call(rbind, cvx)
+  cv <- dsSwissKnife:::.decode.arg(cvx)
+  if (is.list(cv)) cv <- do.call(rbind, cv)
   
-  cvx_cent = lapply(cvx, function(x){scale(x, scale = F)})
+  cvx_cent = lapply(cv, function(x){scale(x, scale = F)})
   cvx_cross = Reduce("+", lapply(cvx_cent, crossprod))
   
-  x_cross = Reduce("+", lapply(x_cent, crossprod))
+  x_cross = Reduce("+", crossprod(x_cent))
   
-  cvx_x_cross = Reduce("+", crossprod(x_cent, cvx))
+  cvx_x_cross = Reduce("+", crossprod(x_cent, cvx_cent))
   
   # x_cross = datashield.aggregate(opals, as.symbol('crossmatrix(x_cent)'), async=T)
   # tot.x_cross = Reduce("+", x_cross)
