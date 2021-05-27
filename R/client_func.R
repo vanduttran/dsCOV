@@ -49,7 +49,9 @@ hybridCrossmatrix <- function(x_cent, cvx) {
   if (is.list(cv)) cv <- do.call(rbind, cv)
   
   cvx_x_cross =  crossprod(x_cent, cv)
-  
+  rows = colnames(x_cent)
+  rownames(cvx_x_cross) = rows
+	
   print(head(x_cent))
   print(head(cv))
   return(cvx_x_cross)
