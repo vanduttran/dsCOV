@@ -3,4 +3,3 @@
 export(canVar)
 export(crossmatrix)
 export(hybridCrossmatrix)
-export(mirror)

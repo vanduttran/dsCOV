@@ -17,17 +17,10 @@ crossmatrix <- function(x,y = NULL){
     return(cross)          
   }
 }
-#' @title Federated ComDim
-#' @param x first block
-#' @return x
-#' @export 
-mirror <- function(x){
-	return(x)
-}
 
 #' @title Federated ComDim
 #' @param x_cent centered dataset
-#' @param value output coefficient matrix from CCA
+#' @param value output coefficient matrix from geigen
 #' @return CV canonical variates 
 #' @export 
 canVar <- function(x_cent, value) {
@@ -51,9 +44,7 @@ hybridCrossmatrix <- function(x_cent, cvx) {
   cvx_x_cross =  crossprod(x_cent, cv)
   rows = colnames(x_cent)
   rownames(cvx_x_cross) = rows
-	
-  print(head(x_cent))
-  print(head(cv))
+
   return(cvx_x_cross)
 
 }

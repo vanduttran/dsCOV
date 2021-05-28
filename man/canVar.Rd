@@ -9,7 +9,7 @@ canVar(x_cent, value)
 \arguments{
 \item{x_cent}{centered dataset}
 
-\item{value}{output coefficient matrix from CCA}
+\item{value}{output coefficient matrix from geigen}
 }
 \value{
 CV canonical variates

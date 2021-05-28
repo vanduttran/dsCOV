@@ -12,7 +12,6 @@ Imports: bigmemory, parallel
 Description: Client side functions for integrating sum of squares and cross products matrices.
 AggregateMethods:
     crossmatrix,	
-    mirror,
     canVar,
     hybridCrossmatrix
 License: GPL-3
