@@ -58,3 +58,25 @@ nRows <- function(x){
  x = as.matrix(x)
  return(nrow(x))
 }
+
+#' @title Federated ComDim
+#' @param x dataset
+#' @param Mfold integer stating in how many parts we want to divide the dataset
+#' @return omit list of rows to be omitted in k-fold cross validation
+#' @export 
+omit <- function(x, Mfold){
+  M <- dsSwissKnife:::.decode.arg(Mfold)
+  if (is.list(M)) M <- do.call(rbind, M)
+  
+  nr = nrow(x)
+  omit = sapply(names(opals), function(x){
+    
+    split(sample(1:nr[[x]]), rep(1:M, length = nr[[x]]))
+    
+  })
+  
+  return(omit)
+  
+}
+
+
