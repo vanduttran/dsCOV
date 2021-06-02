@@ -14,7 +14,7 @@ AggregateMethods:
     crossmatrix,	
     canVar,
     hybridCrossmatrix,
-    ds.nRows
+    nRows
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
