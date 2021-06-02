@@ -13,7 +13,8 @@ Description: Client side functions for integrating sum of squares and cross prod
 AggregateMethods:
     crossmatrix,	
     canVar,
-    hybridCrossmatrix
+    hybridCrossmatrix,
+    ds.nRows
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

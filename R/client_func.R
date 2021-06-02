@@ -48,3 +48,14 @@ hybridCrossmatrix <- function(x_cent, cvx) {
   return(cvx_x_cross)
 
 }
+
+
+#' @title Federated ComDim
+#' @param x_cent centered dataset
+#' @param cvx canonical variate from x_cent dataset
+#' @return cv_x_cross as crossprod(cvx, x_cent)
+#' @export 
+ds.nRows <- function(x){
+ x = as.matrix(x)
+ return(nrow(x))
+}
