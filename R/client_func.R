@@ -75,7 +75,7 @@ omit <- function(x,nrows,Mfold){
   print(nr)
   print(names(nr))
   omit = sapply(names(nr), function(x){
-    split(sample(1:nr[[x]]), rep(1:M, length = nr[[x]]))
+    split(sample(1:nr[x,]), rep(1:M, length = nr[x,]))
   })
   return(omit)  
 }
