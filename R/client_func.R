@@ -64,18 +64,17 @@ nRows <- function(x){
 #' @param Mfold integer stating in how many parts we want to divide the dataset
 #' @return omit list of rows to be omitted in k-fold cross validation
 #' @export 
-omit <- function(x,serv,Mfold){
+omit <- function(x,nrows,Mfold){
   M <- dsSwissKnife:::.decode.arg(Mfold)
   if (is.list(M)) M <- do.call(rbind, M)
    
-  S <- dsSwissKnife:::.decode.arg(serv)
-  if (is.list(S)) S <- do.call(rbind, S)
+  nr <- dsSwissKnife:::.decode.arg(nrows)
+  if (is.list(nr)) nr <- do.call(rbind, nr)
  
-  nr =datashield.aggregate(opals, as.symbol("nRows(x)"), async = T) 
+  # nr =datashield.aggregate(opals, as.symbol("nRows(x)"), async = T) 
   print(nr)
-  print(S)
   print(names(nr))
-  omit = sapply(S, function(x){
+  omit = sapply(names(nr), function(x){
     split(sample(1:nr[[x]]), rep(1:M, length = nr[[x]]))
   })
   return(omit)  
