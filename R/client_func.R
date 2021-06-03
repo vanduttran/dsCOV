@@ -71,12 +71,10 @@ omit <- function(x,nrows,Mfold){
   nr <- dsSwissKnife:::.decode.arg(nrows)
   if (is.list(nr)) nr <- do.call(rbind, nr)
  
-  # nr =datashield.aggregate(opals, as.symbol("nRows(x)"), async = T) 
   print(nr)
   print(rownames(nr))
-  omit = sapply(rownames(nr), function(x){
-    split(sample(1:nr[x,]), rep(1:M, length = nr[x,]))
-  })
+  print(M)
+  omit = split(sample(1:nr[x,]), rep(1:M, length = nr[x,]))
   return(omit)  
 }
 
