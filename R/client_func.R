@@ -73,8 +73,8 @@ omit <- function(x,nrows,Mfold){
  
   # nr =datashield.aggregate(opals, as.symbol("nRows(x)"), async = T) 
   print(nr)
-  print(names(nr))
-  omit = sapply(names(nr), function(x){
+  print(rownames(nr))
+  omit = sapply(rownames(nr), function(x){
     split(sample(1:nr[x,]), rep(1:M, length = nr[x,]))
   })
   return(omit)  
