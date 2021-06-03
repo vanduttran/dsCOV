@@ -71,7 +71,7 @@ omit <- function(x,serv,Mfold){
   S <- dsSwissKnife:::.decode.arg(serv)
   if (is.list(S)) S <- do.call(rbind, S)
  
-  nr = nrow(x)
+  nr =datashield.aggregate(opals, as.symbol("nRows(x)"), async = T) 
   print(nr)
   print(S)
   print(names(nr))
