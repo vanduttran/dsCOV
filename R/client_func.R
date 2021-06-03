@@ -69,6 +69,8 @@ omit <- function(x, Mfold){
   if (is.list(M)) M <- do.call(rbind, M)
  
   nr = nrow(x)
+  print(nr)
+  print(names(x))
   omit = sapply(names(x), function(x){
     split(sample(1:nr[[x]]), rep(1:M, length = nr[[x]]))
   })
