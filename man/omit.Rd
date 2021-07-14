@@ -4,12 +4,12 @@
 \alias{omit}
 \title{Federated ComDim}
 \usage{
-omit(x, nrows, Mfold)
+omit(nrows, Mfold)
 }
 \arguments{
-\item{x}{dataset}
-
 \item{Mfold}{integer stating in how many parts we want to divide the dataset}
+
+\item{x}{dataset}
 }
 \value{
 omit list of rows to be omitted in k-fold cross validation

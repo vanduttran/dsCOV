@@ -2,6 +2,10 @@
 
 export(canVar)
 export(crossmatrix)
+export(federateCCA)
 export(hybridCrossmatrix)
 export(nRows)
 export(omit)
+import(geigen)
+importFrom(DSI,datashield.aggregate)
+importFrom(utils,setTxtProgressBar)

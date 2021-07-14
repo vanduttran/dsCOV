@@ -64,7 +64,7 @@ nRows <- function(x){
 #' @param Mfold integer stating in how many parts we want to divide the dataset
 #' @return omit list of rows to be omitted in k-fold cross validation
 #' @export 
-omit <- function(x,nrows,Mfold){
+omit <- function(nrows,Mfold){
   M <- dsSwissKnife:::.decode.arg(Mfold)
   if (is.list(M)) M <- do.call(rbind, M)
    
@@ -74,7 +74,7 @@ omit <- function(x,nrows,Mfold){
   print(nr)
   print(rownames(nr))
   print(M)
-  omit = split(sample(1:nr[x,]), rep(1:M, length = nr[x,]))
+  omit = split(sample(1:nr), rep(1:M, length = nr))
   return(omit)  
 }
 
